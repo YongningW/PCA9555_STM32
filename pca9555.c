@@ -33,11 +33,11 @@ static HAL_StatusTypeDef pca9555_readRegister(PCA9555_HandleTypeDef *hdev, uint8
 	uint8_t datalow = 0;
 
 	/* reading the low byte */
-	ret = HAL_I2C_Mem_Read(hdev->hi2c, hdev->addr, addr, 1, &datahigh, 1, HAL_MAX_DELAY);
+	ret = HAL_I2C_Mem_Read(hdev->hi2c, hdev->addr, addr, 1, &datalow, 1, HAL_MAX_DELAY);
 	if (ret != HAL_OK) return ret;
 
 	/* reading the high byte */
-	ret = HAL_I2C_Mem_Read(hdev->hi2c, hdev->addr, addr+1, 1, &datalow, 1, HAL_MAX_DELAY);
+	ret = HAL_I2C_Mem_Read(hdev->hi2c, hdev->addr, addr+1, 1, &datahigh, 1, HAL_MAX_DELAY);
 	if (ret != HAL_OK) return ret;
 
 	/* builds the 16 bits value */
